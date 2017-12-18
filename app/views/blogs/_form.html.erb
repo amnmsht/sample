@@ -1,25 +1,26 @@
+<div class="container">   <!--全体を囲むコンテナ-->
+
 <%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-      <ul>
-
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <!--<h2><%= @blog.errors.count %>件のエラーがあります。</h2>-->
+        <% @blog.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
       <% end %>
-      </ul>
     </div>
   <% end %>
-
-  <div class="blog_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+<form>
+  <div class="form-group">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title,class:"form-control" %>
   </div>
-  <div class="blog_title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
+  <div class="form-group">
+    <%= form.label :内容 %>
+    <%= form.text_field :content,class:"form-control" %>
   </div>
-  <%= form.submit %>
-<% end %>
+    <p><%= form.submit"投稿する",class: 'btn btn-success btn-sm' %></P>
+　　<% end %>
+  </form>
+<p><%= link_to "ブログ一覧画面にもどる", blogs_path,class: 'btn btn-warning btn-sm' %></p>
 
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+</div><!--全体を囲むコンテナ-->

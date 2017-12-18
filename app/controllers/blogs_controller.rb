@@ -1,6 +1,9 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   
+  def top#12/15追加
+  end
+  
   def index
     @blogs = Blog.all
   end

@@ -1,16 +1,25 @@
-<h3>以下の内容で、送信する。</h3>
+<div class="container">
 
-<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
+  <h3>以下の内容で、送信する。</h3>
 
-  <p>タイトル:<%= @blog.title %></p>
-  <p>本文:<%= @blog.content %></p>
-  <%= form.submit  "登録する" %>
-<% end %>
+    <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :content %>
+
+    <div class="well">
+      <h3>タイトル<%= @blog.title %></h3> 　　<!--この部分をformのパーツしたい-->
+      <p>本文:<%= @blog.content %></p>       <!--この部分をformのパーツしたい-->
+    </div>
+  
+      <%= form.submit  "登録する",class:"btn btn-success btn-sm" %>
+      <% end %>
+
 
 <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <%= form.submit "もどる", name: 'back' %>
+  <p></p><%= form.submit "もどる", name: 'back',class:"btn btn-warning btn-sm"%></p>
 <% end %>
+
+</div>
+
