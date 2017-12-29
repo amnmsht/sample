@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   resource :contacts
   
   #root 'blogs#index'#(12/14までの設定）このルーティングを設定すると'/'が呼ばれるとindexに遷移させていた
@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   resources :blogs do #rails resourceで作成した7項目に追加する
     collection do #colectionはid指定ではなく全体に使える
     post :confirm
+    
+     resources :users,only: [:new,:create,:show]
+     resources :sessions,only:[:new,:create,:destroy]
     end
   end
 end
   
-  #resources :blogs
- #end
+ 

@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user, only: [:new, :edit, :show, :destroy]
   
   def top#12/15追加
   end
@@ -60,5 +61,11 @@ def new
   def set_blog
      @blog = Blog.find(params[:id])
   end
+  
+       def set_current_user
+         unless logged_in?
+         flash[:notice] = 'ログインして下さい'
+         redirect_to new_session_path
+    end
+  end
 end
-
