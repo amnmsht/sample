@@ -1,7 +1,14 @@
-<div class="container">   <!---全体を囲むコンテナ-->
+<div class="container">
   <h1>ブログ詳細画面</h1>
+    <% unless @blog.user == current_user %>
+      <% if @favorite.present? %>
+      <p><%= link_to 'お気に入り解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger btn-sm' %></p>
+      <% else %>
+      <p><%= link_to 'お気に入りする', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-info btn-sm' %></p>
+  <% end %>
+<% end %>
     <div class="well">
     <p>タイトル: <%= @blog.title %></p>
     <p>内容: <%= @blog.content %></p>
   </div>
-</div><!---全体を囲むコンテナ-->
+</div>

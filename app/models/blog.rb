@@ -1,6 +1,9 @@
 class Blog < ApplicationRecord
-    validate :add_error_sample
- 
+  belongs_to :user,optional: true
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
+  
+  validate :add_error_sample
   def add_error_sample
       
     # タイトルが空のときにエラーメッセージを追加する      

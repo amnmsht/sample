@@ -11,14 +11,14 @@
       <p>本文:<%= @blog.content %></p>       <!--この部分をformのパーツしたい-->
     </div>
   
-      <%= form.submit  "登録する",class:"btn btn-success btn-sm" %>
+      <p><%= form.submit  "登録する",class:"btn btn-success btn-sm" %></p>
       <% end %>
 
 
 <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <p></p><%= form.submit "もどる", name: 'back',class:"btn btn-warning btn-sm"%></p>
+  <p><%= form.submit "もどる", name: 'back',class:"btn btn-warning btn-sm"%></p>
 <% end %>
 
 </div>

@@ -25,15 +25,13 @@
             <li><%= link_to "投稿一覧",blogs_path %></li>
             <li><%= link_to "新規投稿",new_blog_path %></li>
             <% if logged_in? %>
-            <li><%= link_to "Profile", user_path(current_user.id) %></li>
-            <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+            <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
             <li><%= link_to @current_user.name, user_path(current_user.id) %></li>
             <% else %>
-            <li><%= link_to "Sign up", new_user_path %></li>
-            <li><%= link_to "Login", new_session_path %></li>
-            
-            <% end %>            
-            
+            <li><%= link_to "アカウント登録", new_user_path %></li>
+            <li><%= link_to "ログイン", new_session_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -42,9 +40,9 @@
     <div class="container">
       
     <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+    <p><%= content_tag(:div, value, class: "alert alert-#{key}") %></P>
     <% end %>
-    
+
     <%= yield %>
     </div>
     
