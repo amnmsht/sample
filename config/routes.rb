@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   if Rails.env.development?
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   
-  resource :contacts
-  
+  #resource :contacts
   #root 'blogs#index'#(12/14までの設定）このルーティングを設定すると'/'が呼ばれるとindexに遷移させていた
-  root 'blogs#top'#（12/15からの設定）このルーティングを設定すると'/'が呼ばれるとtopに遷移させる 
-  resources :blogs do #rails resourceで作成した7項目に追加する
+  
+    root 'blogs#top'#（12/15からの設定）このルーティングを設定すると'/'が呼ばれるとtopに遷移させる 
+    resources :blogs do #rails resourceで作成した7項目に追加する
     collection do #colectionはid指定ではなく全体に使える
     post :confirm
 
