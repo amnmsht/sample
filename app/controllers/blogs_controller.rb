@@ -26,9 +26,10 @@ def new
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     if @blog.save
+    BlogMailer.blog_mail(@blog).deliver
       #redirect_to blogs_path, notice: "ブログを作成しました！"←二重の表示を避けてflash化#
       flash[:success] = "ブログを作成しました!"
-      redirect_to blogs_path          
+      redirect_to blogs_path
     else
       render 'new'
     end

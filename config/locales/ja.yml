@@ -1,9 +1,9 @@
 ja:
-  activerecord:
-    models:
+  activerecord: 
+    models: 
+      user:  
+    attributes: 
       user: 
-    attributes:
-      user:
         name: お名前
         email: メールアドレス
         password: パスワード

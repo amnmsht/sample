@@ -27,7 +27,7 @@
             <% if logged_in? %>
             <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
             <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-            <li><%= link_to @current_user.name, user_path(current_user.id) %></li>
+            <li><%= link_to "#{current_user.name}さんようこそ", user_path(current_user.id) %></li>
             <% else %>
             <li><%= link_to "アカウント登録", new_user_path %></li>
             <li><%= link_to "ログイン", new_session_path %></li>
