@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :set_current_user, only: [:new, :edit, :show]
   
-  def top#12/15追加
+  def top
   end
   
   def index
