@@ -1,6 +1,10 @@
 <div class="container">
   <h1><%=@user.name %>のページ</h1>
     <div class ="well">
+      <p>
+        <!--<strong>Image:</strong>-->
+        <%= image_tag (@user.image_url) if @user.image.present? %>
+      </p>
       <p>メールアドレス:<%=@user.email %></p>
     </div>
     <h2>お気に入りの一覧</h2>
@@ -22,3 +26,5 @@
       <% end %>
     </tbody>
 </table>
+  <p><%= link_to "ユーザーの編集", edit_user_path(@user), class: 'btn btn-default'%></p>
+</div>

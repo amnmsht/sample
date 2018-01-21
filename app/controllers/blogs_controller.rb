@@ -25,15 +25,18 @@ def new
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
+    @blog.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
     if @blog.save
     BlogMailer.blog_mail(@blog).deliver
-      #redirect_to blogs_path, notice: "ブログを作成しました！"←二重の表示を避けてflash化#
       flash[:success] = "ブログを作成しました!"
       redirect_to blogs_path
     else
       render 'new'
     end
   end
+  #redirect_to blogs_path, notice: "ブログを作成しました！"←二重の表示を避けてflash化#
+  #@blog.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present? 重要
+  
   
   def show
     #@blog = Blog.find(params[:id])←共通化した部分の記述は削除。
@@ -66,7 +69,7 @@ def new
   
   private
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
   
   def set_blog

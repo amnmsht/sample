@@ -10,5 +10,6 @@
     <div class="well">
     <p>タイトル: <%= @blog.title %></p>
     <p>内容: <%= @blog.content %></p>
+    <p><%= image_tag(@blog.image_url) if @blog.image.present? %></p><!-- If分以下重要-->
   </div>
 </div>

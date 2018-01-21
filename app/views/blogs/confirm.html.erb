@@ -8,12 +8,13 @@
 
     <div class="well">
       <h3>タイトル<%= @blog.title %></h3> 　　<!--この部分をformのパーツしたい-->
-      <p>本文:<%= @blog.content %></p>       <!--この部分をformのパーツしたい-->
+      <p>本文:<%= @blog.content %></p>
+      <p><%= hidden_field_tag :"cache[image]",@blog.image.cache_name %></p><!--キャッシュから復元して保存する-->
+      <p><%= image_tag(@blog.image.url) if @blog.image.present? %></p><!--If以下重要。画像がない場合のエラー回避-->
+
     </div>
-  
       <p><%= form.submit  "登録する",class:"btn btn-success btn-sm" %></p>
       <% end %>
-
 
 <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :title %>
